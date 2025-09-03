@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const mongooseDB = async ()=>{
 
     try{
-        const connect = await mongoose.connect("mongodb+srv://sriyas15:Sriyas%4015@e-com.e4hums0.mongodb.net/ecommerce")
+        const connect = await mongoose.connect("MongoDB Link Paste Here")
         console.log(`MongooseDB is connected successfully...`);
     }catch(e){
         console.log(`Error Occured: ${e.message}`);
