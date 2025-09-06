@@ -1,12 +1,14 @@
 import { useLocation, useParams } from 'react-router-dom'
+import { useGetProductDetailsQuery } from '../slices/productsApiSlice';
 
 const ProductDetails = () => {
 
-  const {id} = useParams();
-  const location = useLocation()
-  const product = location.state?.product;
+  const { id:productId } = useParams();
+  
+  const { data:product,error,isLoading } = useGetProductDetailsQuery(productId);
 
-  console.log(product);
+  if(isLoading) return <p>Loading...</p>
+  if(error) return <p>Error: {error.message}</p>
 
   return (
    

@@ -15,7 +15,7 @@ router.get("/",asyncHandler(async(req, res) => {
 router.get("/:id",asyncHandler(async (req,res)=>{
 
     const data = await Product.findById(req.params.id);
-    res.json(products);
+    res.json(data);
  
 }));
 
