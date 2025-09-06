@@ -1,20 +1,23 @@
 import express from "express";
-import products from "./data/products.js";
 import cors from 'cors';
 import mongooseDB from "./config/db.js";
 import productRoutes from './routes/productRoutes.js';
+import asyncHandler from "./middleware/asyncHandler.js";
+import {notFound,errorHandle} from "./errorHandle/errorHandle.js";
 
-const PORT = 5000;
+
 const app = express();
 app.use(cors());
 
 mongooseDB();
 
-app.get("/", (req, res) => {
-  res.send("API running...");
-});
+app.get("/", asyncHandler((req, res) => {
+  res.send("Home Page...");
+}));
 
 app.use("/api/products",productRoutes);
+app.use(notFound);
+app.use(errorHandle);
 
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(5000);

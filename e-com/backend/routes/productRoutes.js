@@ -1,29 +1,24 @@
 import express from 'express';
 import Product from '../model/productModel.js';
-// import products from '../data/products.js';
-import asycHandler from '../middleware/asyncHandler.js';
+import asyncHandler from '../middleware/asyncHandler.js';
+// import notFound from '../errorHandle/errorHandle.js';
 
 const router = express.Router();
 
-router.get("/",asycHandler(async(req, res) => {
-  try{
+router.get("/",asyncHandler(async(req, res) => {
+
     const products = await Product.find({});
     res.json(products);
-
-  }catch(e){
-    console.log(`Error Occured ${e.message}`);
-  }
+  
 }));
 
-router.get("/:id",async (req,res)=>{
+router.get("/:id",asyncHandler(async (req,res)=>{
 
-  try{
     const data = await Product.findById(req.params.id);
     res.json(products);
-  }catch(e){
-    console.log(`Error Occured ${e.message}`);
-  }
-})
+ 
+}));
+
 
 
 export default router;
