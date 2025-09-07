@@ -1,11 +1,24 @@
-import { useLocation, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useGetProductDetailsQuery } from '../slices/productsApiSlice';
+import { useSelector,useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { addToCart } from '../slices/cartItemsSlice';
 
 const ProductDetails = () => {
 
   const { id:productId } = useParams();
   
   const { data:product,error,isLoading } = useGetProductDetailsQuery(productId);
+
+  const [qty,setQty] = useState(1);
+
+  const dispatch = useDispatch();
+
+  const addToCartHandler = ()=>{
+
+      dispatch(addToCart({...product,qty}))
+
+  }
 
   if(isLoading) return <p>Loading...</p>
   if(error) return <p>Error: {error.message}</p>
@@ -35,16 +48,22 @@ const ProductDetails = () => {
                 product.countInStock > 0 && (
                   <div>
                     <label htmlFor="quantity">Quantity</label>
-                    <select name="quantity" id="" className="select select-primary w-20 ml-2">
-                    {[...Array(product.countInStock).keys()].map((count)=>(
-                      <option key={count + 1} value={count+1}>{count+1}</option>
-                    ))}
+
+                    <form onChange = {(e)=>setQty(Number(e.target.value))} >
+
+                      <select name="quantity" id="" className="select select-primary w-20 ml-2">
+                        {[...Array(product.countInStock).keys()].map((count)=>(
+                          <option key={count + 1} value={count+1}>{count+1}</option>
+                        ))}
                      </select>
+
+                    </form>
+
                   </div>
                     
                 )
               }
-            <button disabled={product.countInStock === 0} className="btn btn-primary my-3 block">Buy Now</button>
+            <button onClick={addToCartHandler} disabled={product.countInStock === 0} className="btn btn-primary my-3 block">Buy Now</button>
             </div>
         </div>
     </div>
