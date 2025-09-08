@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useGetProductDetailsQuery } from '../slices/productsApiSlice';
 import { useSelector,useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { addToCart } from '../slices/cartItemsSlice';
+import { addToCart } from '../slices/cartSlice';
 
 const ProductDetails = () => {
 
@@ -15,9 +15,7 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
 
   const addToCartHandler = ()=>{
-
       dispatch(addToCart({...product,qty}))
-
   }
 
   if(isLoading) return <p>Loading...</p>
@@ -43,7 +41,7 @@ const ProductDetails = () => {
                 product.countInStock > 0 ? "In Stock" : "Out of Stock"
               }
             </p>
-            
+            <p className='my-4 font-bold text-md'>{product.price}</p>
               {
                 product.countInStock > 0 && (
                   <div>
@@ -58,7 +56,6 @@ const ProductDetails = () => {
                      </select>
 
                     </form>
-
                   </div>
                     
                 )
