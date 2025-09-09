@@ -6,6 +6,7 @@ import App from './App.jsx';
 import HomePage from './Pages/HomePage.jsx';
 import Cart from './Pages/Cart.jsx';
 import ProductDetails from './Pages/ProductDetails.jsx';
+import Checkout from './Pages/Checkout.jsx';
 import store from './store.js';
 
 
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
             <Route index={true} path='/'  element={<HomePage/>}/>
             <Route path='/cart'  element={<Cart/>}/>
             <Route path='/product/:id'  element={<ProductDetails/>}/>
+            <Route path='/checkout'  element={<Checkout/>}/>
 
         </Route>
     )

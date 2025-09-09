@@ -8,7 +8,6 @@ const HomePage = () => {
   if(isLoading) return <p>Loading...</p>
   if(error) return <p>Error: {error.message}</p>
 
-
   return (
     <>
     <div className="container max-w-7xl my-0 mx-auto">

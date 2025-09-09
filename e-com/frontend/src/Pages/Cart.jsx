@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateQty,removeCart } from "../slices/cartSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 
 const Cart = () => {
@@ -83,7 +84,7 @@ const Cart = () => {
             <p className="flex justify-between font-bold text-lg">
               <span>Total:</span> <span>₹{totalPrice || 0}</span>
             </p>
-            <button className="btn btn-primary w-full mt-5">Proceed to Checkout</button>
+            <Link to='/checkout'><button className="btn btn-primary w-full mt-5">Proceed to Checkout</button></Link>
           </div>
         </div>
       ) : (

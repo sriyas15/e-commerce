@@ -60,7 +60,7 @@ const ProductDetails = () => {
                     
                 )
               }
-            <button onClick={addToCartHandler} disabled={product.countInStock === 0} className="btn btn-primary my-3 block">Buy Now</button>
+            <button onClick={addToCartHandler} disabled={product.countInStock === 0} className="btn btn-primary my-3 block">Add to Cart</button>
             </div>
         </div>
     </div>
