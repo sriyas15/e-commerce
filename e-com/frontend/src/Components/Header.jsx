@@ -1,5 +1,9 @@
+import { useSelector } from "react-redux";
 
 const Header = () => {
+
+    const { cartItems } = useSelector((state) => state.cart);
+
   return (
     <main>
 
@@ -9,7 +13,7 @@ const Header = () => {
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal px-1">
-                <li><a href="/cart">Cart (1)</a></li>
+                <li><a href="/cart">Cart ({cartItems.length})</a></li>
                 <li>
                     <details>
                     <summary>Riyas</summary>
