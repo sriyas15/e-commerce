@@ -14,6 +14,7 @@ const Header = () => {
             <div className="flex-none">
                 <ul className="menu menu-horizontal px-1">
                 <li><a href="/cart">Cart ({cartItems.length})</a></li>
+                <li><a href="/login">Log In</a></li>
                 <li>
                     <details>
                     <summary>Riyas</summary>
