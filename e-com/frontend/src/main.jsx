@@ -8,6 +8,7 @@ import Cart from './Pages/Cart.jsx';
 import ProductDetails from './Pages/ProductDetails.jsx';
 import Checkout from './Pages/Checkout.jsx';
 import LoginPage from './Pages/LoginPage.jsx';
+import SignupPage from './Pages/SignupPage.jsx';
 import store from './store.js';
 
 
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
             <Route path='/product/:id'  element={<ProductDetails/>}/>
             <Route path='/checkout'  element={<Checkout/>}/>
             <Route path='/login'  element={<LoginPage/>}/>
+            <Route path='/signup'  element={<SignupPage/>}/>
 
         </Route>
     )
