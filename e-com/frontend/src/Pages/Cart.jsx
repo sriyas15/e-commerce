@@ -2,12 +2,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateQty,removeCart } from "../slices/cartSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 
 
 const Cart = () => {
   const { cartItems, itemPrice, shippingPrice, taxPrice, totalPrice } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleQtyChange = (id, newQty) => {
     dispatch(updateQty({ id, qty: Number(newQty) }));
@@ -17,6 +18,10 @@ const Cart = () => {
     
     dispatch(removeCart(id))
   } 
+
+  const checkoutHandler = ()=>{
+    navigate('/login?redirect=/shipping');
+  }
   
 
   return (
@@ -84,7 +89,7 @@ const Cart = () => {
             <p className="flex justify-between font-bold text-lg">
               <span>Total:</span> <span>₹{totalPrice || 0}</span>
             </p>
-            <Link to='/checkout'><button className="btn btn-primary w-full mt-5">Proceed to Checkout</button></Link>
+            <button onClick={checkoutHandler} className="btn btn-primary w-full mt-5">Proceed to Checkout</button>
           </div>
         </div>
       ) : (
