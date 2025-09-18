@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useLogoutMutation } from "../slices/userApiSlice";
 import { logout as logoutAction } from "../slices/authSlice";
+import { clearCart } from "../slices/cartSlice";
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -13,6 +14,7 @@ const Header = () => {
 
   const handleLogout = async () => {
     try {
+      dispatch(clearCart());
       await logout();
       dispatch(logoutAction());
       navigate("/login");

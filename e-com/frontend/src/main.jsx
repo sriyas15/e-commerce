@@ -9,6 +9,7 @@ import ProductDetails from './Pages/ProductDetails.jsx';
 import LoginPage from './Pages/LoginPage.jsx';
 import SignupPage from './Pages/SignupPage.jsx';
 import ShippingScreen from './Pages/ShippingScreen.jsx';
+import ProfileScreen from './Pages/ProfileScreen.jsx';
 import store from './store.js';
 
 
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
             <Route path='/shipping'  element={<ShippingScreen/>}/>
             <Route path='/login'  element={<LoginPage/>}/>
             <Route path='/signup'  element={<SignupPage/>}/>
+            <Route path='/profile'  element={<ProfileScreen/>}/>
 
         </Route>
     )
