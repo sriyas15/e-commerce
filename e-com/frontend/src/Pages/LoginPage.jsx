@@ -4,7 +4,6 @@ import { useSelector,useDispatch } from "react-redux";
 import { useLocation,useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../slices/userApiSlice";
 import { setCredentials } from "../slices/authSlice";
-import { setCartFromServer } from "../slices/cartSlice";
 import "react-toastify/dist/ReactToastify.css";
 
 
@@ -40,12 +39,9 @@ const LoginPage = () => {
         }
         else{
             try{
-                const res = await login({ email, password,localCart:cartFromLocalStorage  }).unwrap();
-                console.log("SERVER LOGIN RESPONSE:", res);
+                const res = await login({ email, password }).unwrap();
                 
                 dispatch(setCredentials({...res}));
-                dispatch(setCartFromServer(res.cart));
-                localStorage.removeItem("cartItems");
                 toast.success("Successfully Logged In");
                 navigate("/");
 

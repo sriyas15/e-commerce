@@ -81,7 +81,7 @@ const SignupPage = () => {
                     <input type="password" onChange={(e)=>setNewPassword(e.target.value)}  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Your Password" />
                 </div>
 
-                <div className="flex gap-5">
+                <div className="flex gap-4">
                     <button type="submit" disabled={isLoading}
                         className={`mt-5 text-white font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 
                             focus:outline-none focus:ring-4 ${isLoading
@@ -90,7 +90,7 @@ const SignupPage = () => {
                             }`}>
                         { isLoading ? "Processing" : "Create Account"}
                     </button>
-                    <p className="mt-7">If you already have id</p>
+                    <p className="mt-7">If you already have account?</p>
                     <a className="mt-7 rounded underline hover:text-blue-600 transition-colors duration-200"
                      href="/login">Log In </a>
 

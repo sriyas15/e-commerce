@@ -1,6 +1,6 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useGetProductDetailsQuery } from '../slices/productsApiSlice';
-import { useSelector,useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { addToCart } from '../slices/cartSlice';
 
@@ -13,6 +13,7 @@ const ProductDetails = () => {
   const [qty,setQty] = useState(1);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const addToCartHandler = ()=>{
       dispatch(addToCart({...product,qty}))
@@ -23,7 +24,13 @@ const ProductDetails = () => {
 
   return (
    
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="relative hero bg-base-200 min-h-screen">
+      <button
+        onClick={() => navigate("/")}
+        className="absolute top-5 left-18 btn btn-outline btn-sm"
+      >
+        &larr; Back
+      </button>
         <div className="hero-content flex-col lg:flex-row">
             <img
             src={product.image}

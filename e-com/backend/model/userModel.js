@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 import bcrypt from 'bcrypt';
 
 const userSchema = new mongoose.Schema({
@@ -19,13 +19,6 @@ const userSchema = new mongoose.Schema({
         type:Boolean,
         default:false
     },
-
-    cart: [
-        {
-        productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
-        qty: { type: Number, required: true, default: 1 },
-        },
-    ],
 
 }, {
     timestamps:true
